@@ -1,0 +1,15 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Administration du slider/create{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Créer une image du slider</h2>
+
+    {{ form_start(sliderForm) }}
+        {{ form_widget(sliderForm) }}
+        <input type="submit" class="btn btn-outline-success">
+    {{ form_end(sliderForm) }}
+
+    <a href="{{ path('admin_slider') }}" class="btn btn-outline-mer">Retour à la liste</a>
+
+{% endblock %}

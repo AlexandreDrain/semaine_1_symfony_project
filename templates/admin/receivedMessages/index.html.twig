@@ -1,0 +1,37 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Administration des messages{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Administration des messages reçus</h2>
+
+    <table id="table_id" class="display">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Titre</th>
+                <th>Description partielle</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for receivedMessage in receivedMessages %}
+                <tr>
+                    <td>{{ receivedMessage.id }}</td>
+                    <td>{{ receivedMessage.firstName }}</td>
+                    <td>{{ receivedMessage.email }}</td>
+                    <td>{{ receivedMessage.title }}</td>
+                    <td>{{ receivedMessage.description|striptags|slice(0, 10)|raw }}</td>
+                    <td class="d-flex">
+                        <a href="{{ path('admin_receivedMessages_delete', {'id' : receivedMessage.id }) }}" class="btn btn-outline-danger">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_receivedMessages_create') }}" class="btn btn-outline-mer">Créer un nouveau produit</a>
+
+{% endblock %}

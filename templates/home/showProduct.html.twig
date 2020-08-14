@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}show product!{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="../assets/css/style.css">
+{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid mt-5">
+
+      <h2 class="text-center">Produit</h2>
+
+      <div class="d-flex justify-content-center">
+            <div class="m-5">
+                  <h3>Le produit</h3>
+                  <div class="d-flex justify-content-around">
+                        <div class="card ombre" style="width: 18rem;">
+                              <img src="../{{ produit.image }}" class="card-img-top" alt="{{ produit.alt }}">
+                              <div class="card-body">
+                                    <h5 class="card-title">{{ produit.title }} </h5>
+                                    <p class="card-text">{{ produit.description }}</p>
+                                    <p class="card-text">{{ produit.price }}</p>
+                                    <p class="card-text">{{ produit.categories }}</p>
+                                    <a href="{{ path('home') }}" class="btn btn-outline-mer">Retour à l'acceuil</a>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+            <div class="m-5">
+                  <h3>Images relativent</h3>
+                  <div class="d-flex flex-column">
+                        {% for imageDesc in imageRelative %}
+                        <figure class="figureProduit m-1">
+                              <img src="../{{ imageDesc.srcImage }}" alt="{{ imageDesc.altImage }}">
+                              {# <figcaption>{{ imageDesc.altImage }}</figcaption> #}
+                        </figure>
+                        {% endfor %}
+                  </div>
+            </div>
+      </div>
+
+      <hr>
+
+      <h2 class="text-center">Commentaires relatif au produit</h2>
+
+      <div class="ombre container p-3 mt-5">
+            <form action="" method="post">
+                  <div class="form-group">
+                        <label for="userName">User name</label>
+                        <input type="text" class="form-control" id="userName" aria-describedby="emailHelp" name="userName">
+                        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                  </div>
+                  <div class="form-group">
+                        <label for="userCommentaire">Le commentaire</label>
+                        <textarea name="userCommentaire" id="userCommentaire" class="form-control" rows="3"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+      </div>
+     
+
+      <div class="m-5">
+            <div class="d-flex flex-row flex-wrap justify-content-around">
+                  {% for commentaire in commentaires %}
+                        <div class="card ombre col-md-4">
+                              <div class="card-body">
+                                    <p class="card-text"><U>Username</U> : {{ commentaire.userName }}</p>
+                                    <p class="card-text">{{ commentaire.userCommentaire }}</p>
+                                    <p class="card-text"><U>Published at</U> : {{ commentaire.publishedAt|date('Y-m-d') }}</p>
+                              </div>
+                        </div>
+                  {% endfor %} 
+            </div>
+      </div>
+
+
+      <hr>
+      <hr>
+
+      <h2 class="text-center">Produit relatif</h2>
+
+      <div class="d-flex justify-content-around mt-5 mb-5">
+            {% for produitByCat in produitByCats %}
+            <div class="card ombre" style="width: 18rem;">
+                  <img src="../{{ produitByCat.image }}" class="card-img-top" alt="{{ produitByCat.alt }}">
+                  <div class="card-body">
+                        <h5 class="card-title">{{ produitByCat.title }}</h5>
+                        <p class="card-text">{{ produitByCat.description }}</p>
+                        <p class="card-text">{{ produitByCat.price }}</p>
+                        <p class="card-text">{{ produitByCat.categories }}</p>
+                        <a href="{{ path('detail_produit', {'id': produitByCat.id }) }}"
+                              class="btn btn-outline-mer">Détails</a>
+                  </div>
+            </div>
+            {% endfor %}
+      </div>
+
+</div>
+{% endblock %}

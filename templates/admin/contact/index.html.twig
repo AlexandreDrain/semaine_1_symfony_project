@@ -1,0 +1,37 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Administration des contacts{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Administration des contacts</h2>
+
+    <table id="table_id" class="display">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Numéro de téléphone</th>
+                <th>Email</th>
+                <th>Modification</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact.id }}</td>
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.telephone }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td class="d-flex">
+                        <a href="{{ path('admin_contact_modify', {'id' : contact.id }) }}" class="btn btn-outline-warning">Modifier</a>
+                        <a href="{{ path('admin_contact_delete', {'id' : contact.id }) }}" class="btn btn-outline-danger">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_contact_create') }}" class="btn btn-outline-mer">Créer un nouveeau contact</a>
+
+
+{% endblock %}

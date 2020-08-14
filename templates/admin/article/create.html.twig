@@ -1,0 +1,15 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Administration des articles/create{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Créer un article</h2>
+
+    {{ form_start(articleForm) }}
+        {{ form_widget(articleForm) }}
+        <input type="submit" class="btn btn-outline-success">
+    {{ form_end(articleForm) }}
+
+    <a href="{{ path('admin_article') }}" class="btn btn-outline-mer">Retour à la liste</a>
+
+{% endblock %}

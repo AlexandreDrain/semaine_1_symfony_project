@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-5">
+
+    <div id="carouselExampleCaptions" class="carousel slide col-md-6 m-auto" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+            <div class="carousel-inner ombre">
+                {% set count = 1 %}
+                {% for slider in sliderImages %}
+                    <div class="carousel-item {{ count == 1 ? "active" : ""}}">
+                        <img src="{{ slider.srcImage }}" class="d-block w-100" alt="{{ slider.altImage }}">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{ slider.nameImage }}</h5>
+                            <p>{{ slider.altImage }}</p>
+                        </div>
+                    </div>
+                    {% set count = count + 1 %}
+                {% endfor %}
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Précedent</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Suivant</span>
+            </a>
+        </div>
+    </div>
+
+    <br>
+
+    <h2 class="text-center">Produits</h2>
+
+    <div class="d-flex justify-content-around mt-5 mb-5">
+        {% for produit in produits %}
+        <div class="card ombre" style="width: 18rem;">
+            <img src="{{ produit.image }}" class="card-img-top" alt="{{ produit.alt }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ produit.title }} </h5>
+                <p class="card-text">{{ produit.price }}</p>
+                <a href="{{ path('detail_produit', {'id': produit.id }) }}" class="btn btn-outline-mer">Détails du produit</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

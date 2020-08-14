@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}product by catégories{% endblock %}
+
+{% block stylesheets %} 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+{% endblock %}
+
+{% block body %}
+<h2 class="text-center">Produit de la catégorie</h2>
+
+<div class="d-flex justify-content-around mt-5 mb-5">
+    {% for showProductByCat in showProductByCats %}
+    <div class="card ombre" style="width: 18rem;">
+        <img src="../../{{ showProductByCat.image }}" class="card-img-top" alt="{{ showProductByCat.alt }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ showProductByCat.title }}</h5>
+            <p class="card-text">{{ showProductByCat.description }}</p>
+            <p class="card-text">{{ showProductByCat.price }}</p>
+            <p class="card-text">{{ showProductByCat.categories }}</p>
+            <a href="{{ path('detail_produit', {'id': showProductByCat.id }) }}" class="btn btn-outline-mer">Détails</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

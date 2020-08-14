@@ -1,0 +1,21 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Administration des produits/modify{% endblock %}
+
+{% block stylesheets %} 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Modifier un produit</h2>
+
+    {{ form_start(productForm) }}
+        {{ form_widget(productForm) }}
+        <input type="submit" class="btn btn-outline-success">
+    {{ form_end(productForm) }}
+
+    <br>
+    <a href="{{ path('admin_article') }}" class="btn btn-outline-mer">Retour à la liste</a>
+
+{% endblock %}

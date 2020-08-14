@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SiteVitrineController!{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid mt-5">
+
+      <div class="d-flex justify-content-around mt-5 mb-5">
+        {% for quiSuisJe in quiSommesNous %}
+            <div class="card ombre" style="width: 18rem;">
+                <img src="{{ quiSuisJe.pdp }}" class="card-img-top" alt="image de moi">
+                <div class="card-body">
+                <h5 class="card-title">{{ quiSuisJe.firstName ~ " " ~ quiSuisJe.name }}</h5>
+                <p class="card-text">{{ quiSuisJe.description }}</p>
+                <p class="card-text">{{ quiSuisJe.email }}</a>
+                </div>
+            </div>
+        {% endfor %}
+      </div>
+
+</div>
+
+{% endblock %}

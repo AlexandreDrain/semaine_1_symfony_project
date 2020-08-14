@@ -1,0 +1,39 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Administration des articles{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Administration des articles</h2>
+
+    <table id="table_id" class="display">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description partielle</th>
+                <th>Lien de l'image</th>
+                <th>Le alt de l'image</th>
+                <th>Modification</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+               <tr>
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.name }}</td>
+                    <td>{{ article.description }}</td>
+                    <td>{{ article.srcImage }}</td>
+                    <td>{{ article.altImage }}</td>
+                    <td class="d-flex">
+                        <a href="{{ path('admin_article_modify', {'id' : article.id }) }}" class="btn btn-outline-warning">Modifier</a>
+                        <a href="{{ path('admin_article_delete', {'id' : article.id }) }}" class="btn btn-outline-danger">Supprimer</a>
+                    </td>
+                </tr> 
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_article_create') }}" class="btn btn-outline-mer">Créer un nouvel article</a>
+
+{% endblock %}

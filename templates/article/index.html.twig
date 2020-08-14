@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-5">
+
+    <h2 class="text-center">Articles</h2>
+
+    <div class="d-flex justify-content-around mt-5 mb-5">
+    {% for article in articles %}
+        <div class="card ombre d-flex flex-column align-items-center">
+            <div class="card-header">
+                {{ article.name }}
+            </div>
+            <div class="card-body d-flex flex-column align-items-center">
+            <img src="{{ article.srcImage }}" class="card-img-top" alt="{{ article.altImage }}">
+            <p class="card-text">{{ article.description }}</p>
+            <a href="{{ path("showArticle", {'id': article.id }) }}" class="btn btn-outline-mer">Détails</a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

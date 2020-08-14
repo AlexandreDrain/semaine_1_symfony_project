@@ -1,0 +1,15 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Administration des produits/create{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Créer un produit</h2>
+
+    {{ form_start(receivedMessagesForm) }}
+        {{ form_widget(receivedMessagesForm) }}
+        <input type="submit" class="btn btn-outline-success">
+    {{ form_end(receivedMessagesForm) }}
+
+    <a href="{{ path('admin_receivedMessages') }}" class="btn btn-outline-mer">Retour à la liste</a>
+
+{% endblock %}

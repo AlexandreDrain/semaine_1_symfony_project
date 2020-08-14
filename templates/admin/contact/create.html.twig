@@ -1,0 +1,15 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Administration des contacts/create{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Créer un contact</h2>
+
+    {{ form_start(contactForm) }}
+        {{ form_widget(contactForm) }}
+        <input type="submit" class="btn btn-outline-success">
+    {{ form_end(contactForm) }}
+
+    <a href="{{ path('admin_contact') }}" class="btn btn-outline-mer">Retour à la liste</a>
+
+{% endblock %}
